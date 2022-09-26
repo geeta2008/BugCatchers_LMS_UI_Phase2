@@ -1,5 +1,7 @@
 package stepdefinition;
 
+import org.testng.Assert;
+
 import com.factory.DriverFactory;
 import com.github.dockerjava.api.model.Driver;
 import com.pages.ManageBatch_PageObj;
@@ -7,7 +9,7 @@ import com.pages.ManageBatch_PageObj;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
+
 
 public class F08_AddBatch_StepDef {
 	
@@ -69,10 +71,10 @@ public class F08_AddBatch_StepDef {
 		Assert.assertEquals(string,  batch.getHeaderTxt());
 	}
 
-	@When("User add {string} , {string} , \"\"{int}\"\" , {string} , {string} and \"\"Save\"\"")
-	public void user_add_and_save(String string, String string2, Integer int1, String string3, String string4) {
-	   
-	    
+	@When("User add {string} , {string} , {string} , {string} , {string} and {string}")
+	public void user_add_and(String BatchNameTxtBx, String BatchDescription, String ProgramNameDrpDwn, String StatusRadioBtn, String NoOfClassesTxtBx, String ClickOnButton) {
+		
+		batch.editBatchDetails(BatchNameTxtBx, BatchDescription, ProgramNameDrpDwn, StatusRadioBtn, NoOfClassesTxtBx, ClickOnButton);
 	}
 
 	@When("User clicks on Save")
@@ -84,18 +86,18 @@ public class F08_AddBatch_StepDef {
 	@Then("User verifies message {string}")
 	public void user_verifies_message(String string) {
 	   
-	    
+		Assert.assertEquals(string, batch.getSucessMsg());
 	}
 
 	@When("User searches with newly created {string}")
-	public void user_searches_with_newly_created(String string) {
+	public void user_searches_with_newly_created(String batchName) {
 	   
-	    
+		 batch.enterText(batchName);
 	}
 
 	@Then("records of the newly created  {string} is displayed")
 	public void records_of_the_newly_created_is_displayed(String string) {
 	   
-	    
+		Assert.assertEquals(string, batch.checkBatchName());
 	}
 }

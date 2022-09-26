@@ -38,23 +38,23 @@ And User is on Batch page
     And User clicks Cancel button
     Then User can see Batch Details form disappears.
     And  "Manage Batch" is displayed
-  #
-    #@tag1
-    #Scenario Outline: Adding a batch
-    #When User clicks A New Batch button
-    #And User add "<BatchNameTxtBx>" , "<BatchDescription>" , "<ProgramNameDrpDwn>" , "<StatusRadioBtn>" , "<NoOfClassesTxtBx>" and "<ClickOnButton>" 
-    #And User clicks on Save
-    #Then User verifies message "Successful Batch Created"
-    #
-    #Examples: 
-    #| BatchNameTxtBx | BatchDescription | ProgramNameDrpDwn | StatusRadioBtn | NoOfClassesTxtBx | ClickOnButton |
-    #| BName01        | BDecrip01        | "2"               |  Active        | 9                | "Save"        | 
-    #
-      #
-     #Scenario Outline: Verify Added Batch is created
-     #When User searches with newly created "Batch Name"  
-     #Then records of the newly created  "Batch Name" is displayed
-     #
-     #Examples: 
-     #| BatchNameTxtBx |
-     #| BName01        |
+  
+    @tag1
+    Scenario Outline: Adding a batch
+    When User clicks A New Batch button
+    And User add "<BatchNameTxtBx>" , "<BatchDescription>" , "<ProgramNameDrpDwn>" , "<StatusRadioBtn>" , "<NoOfClassesTxtBx>" and "<ClickOnButton>" 
+    And User clicks on Save
+    Then User verifies message "Batch Created"
+    
+    Examples: 
+    | BatchNameTxtBx | BatchDescription | ProgramNameDrpDwn | StatusRadioBtn | NoOfClassesTxtBx | ClickOnButton |
+    | BName01        | BDecrip01        | 2               |  Active        | 9                | Save        | 
+    
+      
+     Scenario Outline: Verify Added Batch is created
+     When User searches with newly created "<BatchNameTxtBx>"  
+     Then records of the newly created  "<BatchNameTxtBx>" is displayed
+     
+     Examples: 
+     | BatchNameTxtBx |
+     | BName01        |
