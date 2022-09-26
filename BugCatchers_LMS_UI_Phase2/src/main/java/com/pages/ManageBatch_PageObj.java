@@ -88,6 +88,13 @@ public class ManageBatch_PageObj {
 
 	@FindBy(xpath = "//input[@placeholder='Select a Program name']")
 	WebElement pgmNameTxtBx;
+	
+	@FindBy(xpath = "//ul[@role='listbox']/child::p-dropdownitem[2]/li")
+	WebElement pgmNamedrpdwn;
+	
+	@FindBy(css = ".p-dropdown-trigger-icon.ng-tns-c101-8.pi.pi-chevron-down")
+	WebElement pgmNameDownArrowdrpdwn;
+	
 
 	@FindBy(xpath = "//p-radiobutton[@ng-reflect-input-id='INACTIVE']")
 	WebElement inactiveRadioBtn;
@@ -125,8 +132,7 @@ public class ManageBatch_PageObj {
 
 	@FindBy(xpath = "//tbody[@class='p-datatable-tbody']//tr[2]/td[1]")
 	WebElement secondChkBx;
-
-
+	
 	@FindBy(css = ".p-sortable-column[psortablecolumn='batchName']")
 	WebElement headerBatchName;
 
@@ -275,7 +281,19 @@ public class ManageBatch_PageObj {
 
 		batchNameTxtBx.sendKeys(Keys.HOME,Keys.chord(Keys.SHIFT,Keys.END), batchName);
 		batchDescriptionTxtBx.sendKeys(Keys.HOME,Keys.chord(Keys.SHIFT,Keys.END),batchDescription);
-		pgmNameTxtBx.sendKeys(Keys.HOME,Keys.chord(Keys.SHIFT,Keys.END),programName);
+	//	pgmNameTxtBx.sendKeys(Keys.HOME,Keys.chord(Keys.SHIFT,Keys.END),programName);
+	//	pgmNamedrpdwn.sendKeys(Keys.HOME,Keys.chord(Keys.SHIFT,Keys.END),programName);
+		
+		try {
+			
+		pgmNameDownArrowdrpdwn.click();
+		Thread.sleep(2000);
+		pgmNamedrpdwn.click();
+		Thread.sleep(2000);
+		
+		}catch(Exception e) {
+			System.out.println(e);
+		}
 		inactiveRadioBtn.click();
 		batchNoOfClassesTxtBx.sendKeys(Keys.HOME,Keys.chord(Keys.SHIFT,Keys.END),noOfClasses);
 
@@ -286,6 +304,8 @@ public class ManageBatch_PageObj {
 		} else if(clickOnButton.equals("Save")) {
 
 			saveBtn.click();
+			
+			deleteMsgStr = deleteMsg.getText();
 		}
 	}
 
@@ -717,8 +737,19 @@ public class ManageBatch_PageObj {
 	}
 
 	public String getBatchDetailsTxt() {
-		
+		System.out.println(batchDetailsTxtToBeChecked.getText());
 		return batchDetailsTxtToBeChecked.getText();
+	}
+
+	public String getSucessMsg() {
+	//	System.out.println(deleteMsg.getText());
+		return deleteMsgStr;
+		
+	}
+
+	public String checkBatchName() {
+		System.out.println(firstRecordOfTheTable.get(1).getText());
+		return firstRecordOfTheTable.get(1).getText();
 	}
 }
 
