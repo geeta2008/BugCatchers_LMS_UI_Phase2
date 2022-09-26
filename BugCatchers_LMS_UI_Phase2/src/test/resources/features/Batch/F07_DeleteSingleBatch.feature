@@ -17,24 +17,19 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: Delete Multiple Batches
+Feature: Delete Single Batch.
 
-Background: Select Batch
-Given User is on Batch page
-When User selects more than one ie "4" Batch using checkbox
-Then Batches gets selected
-And User clicks on Delete button
+Background:
+Given User is logged on to LMS website
+And User is on Batch page
 
   @tag1
-  Scenario Outline: Validate Edit button.
-    When User clicks on "<ClickOnButton>"
-    Then User is on Batch page searches for selected Batch name
-    And User verifies that the details based on "<Result>" .
-    
-    
-    Examples: 
-   | ClickOnButton | Result |
-   | No            | Records not deleted |
-   | Yes           | Records deleted |
-
- 
+  Scenario: Validate single Delete for a batch.   
+   When User clicks on first delete button.
+   And User clicks on "Yes" button.
+   Then User verifies that "batch Deleted" message is displayed.
+   
+   Scenario: Validate single Delete for a batch.
+   When User clicks on first delete button.
+   And User clicks on "No" button.
+   Then User verifies that no "no message" message is displayed.

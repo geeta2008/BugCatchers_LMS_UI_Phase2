@@ -17,10 +17,21 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: Search Batch
+Feature: Delete Multiple Batches
+
+Background:
+Given User is logged on to LMS website
+And User is on Batch page
 
   @tag1
-  Scenario: Search by Batch Name
-    Given User is on Batch page
-    When user clicks on search box with Batch Name entered in it
-    Then records of that  "Batch Name" are displayed
+  Scenario: Validate Delete Multiple Batches
+    When User clicks on two records
+    And User clicks on "Yes" button.
+    Then User verifies that "Batches Deleted" message is displayed.
+    
+  @tag1
+  Scenario: Validate Delete Multiple Batches
+    When User clicks on two records
+    And User clicks on "No" button.
+    Then User verifies that no "no message" message is displayed.
+

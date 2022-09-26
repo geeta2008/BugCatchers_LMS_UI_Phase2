@@ -19,19 +19,22 @@
 @tag
 Feature: Edit batch
 
+Background:
+Given User is logged on to LMS website
+
   @tag1
   Scenario Outline: Validate Edit button.
     Given User is on Batch page
     When User clicks on Edit button on first record.
     And  User lands on Batch Details form.
-    And  User edits "<BatchNameTxtBx>" , "<BatchDescription>" , "<ProgramNameDrpDwn>" , "<StatusRadioBtn>" , "<NoOfClassesTxtBx>" and "<ClickOnButton>" 
-    And User searches record with "Batch Name"
-    Then User verifies that the details based on "<Result>" .
+    And  User edits "<BatchNameTxtBx>" , "<BatchDescription>" , "<ProgramNameDrpDwn>" , "<StatusRadioBtn>" , "<NoOfClassesTxtBx>" and "<ClickOnButton>"
+    And  User searches record with "<BatchNameTxtBx>"
+    Then User verifies that the details based on "<BatchNameTxtBx>" , "<BatchDescription>" , "<ProgramNameDrpDwn>" , "<StatusRadioBtn>" , "<NoOfClassesTxtBx>"
     
     
     Examples: 
-    | BatchNameTxtBx | BatchDescription | ProgramNameDrpDwn| StatusRadioBtn | NoOfClassesTxtBx | ClickOnButton | Result           |
-    | BNameUpdate    | BDecripUpdate    | PgmNmeUpdate   | StatusUpdate     | 9                | "Cancel"      | Batch not edited |
-    | BNameUpdate    | BDecripUpdate  |  PgmNmeUpdate   | StatusUpdate      | 9                | "Save"        | Batch edited     |  
+    | BatchNameTxtBx | BatchDescription | ProgramNameDrpDwn| StatusRadioBtn | NoOfClassesTxtBx | ClickOnButton |
+     | BNameUpdate2   | BDecripUpdate2    |  JavaSel      | Inactive     | 9                     | Cancel        | 
+    | BNameUpdate2   | BDecripUpdate2    |  JavaSel      | Inactive     | 9                |  Save        | 
 
  

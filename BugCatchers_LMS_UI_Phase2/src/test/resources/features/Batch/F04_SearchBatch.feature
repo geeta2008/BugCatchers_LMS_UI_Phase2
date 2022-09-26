@@ -17,18 +17,13 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: Delete Single Batch.
+Feature: Search Batch
+
+Background:
+Given User is logged on to LMS website
 
   @tag1
-  Scenario Outline: Validate single Delete for a batch.
-   Given User is on Batch page
-   When User  clicks on delete button.
-   And User sees a pop-up
-   And User clicks on "ClickOnButton"
-   Then User searches for selected Batch name
-   And User verifies that the details based on "<Result>" .
-   
-     Examples: 
-   | ClickOnButton | Result |
-   | No            | Records not deleted |
-   | Yes           | Records deleted |
+  Scenario: Search by Batch Name
+    Given User is on Batch page
+    When user clicks on search box with Batch Name entered in it "sdet"
+    Then records of that  "sdet" are displayed

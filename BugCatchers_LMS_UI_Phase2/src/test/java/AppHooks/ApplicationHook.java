@@ -19,7 +19,7 @@ public class ApplicationHook {
 	private DriverFactory driverfactory;
 	private WebDriver driver;
 	private ConfigReader configReader;
-	Properties prop;
+	public static Properties prop;
 
 	@Before(order = 0)
 	public void getProperty() {
