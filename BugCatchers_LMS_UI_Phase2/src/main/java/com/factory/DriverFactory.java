@@ -13,7 +13,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverFactory {
 
-	public WebDriver driver;
+	public static WebDriver driver;
 
 	public static Properties prop;
 
@@ -21,7 +21,7 @@ public class DriverFactory {
 		try {
 			prop = new Properties();
 			FileInputStream FIS = new FileInputStream(
-					"C:/Users/svatt/git/Dietician-UI-Automation-Hackathon/src/test/resources/config/config.properties");
+					"C:\\Users\\swati\\git\\BugCatchers_LMS_UI_Phase2\\BugCatchers_LMS_UI_Phase2src\\test\\resources\\config\\config.properties");
 			prop.load(FIS);
 		} catch (IOException e) {
 			e.getCause();
@@ -37,6 +37,7 @@ public class DriverFactory {
 		if (browser.equals("chrome")) {
 			WebDriverManager.chromedriver().setup();
 			tlDriver.set(new ChromeDriver());
+			
 		}
 
 		else if (browser.equals("firefox")) {
@@ -57,6 +58,7 @@ public class DriverFactory {
 
 	// This is used to get the driver with threadlocal
 	public static synchronized WebDriver getDriver() {
+		
 		return tlDriver.get();
 
 	}
