@@ -13,7 +13,7 @@ import io.cucumber.testng.CucumberOptions;
 	  plugin = {"pretty"},
 	  monochrome=true, 
 	  //tags = "@feature01",
-	  features = {"src/test/resources/features/ManageAssignmentsfeature"}, 
+	  features = {"src/test/resources/features"}, 
 	  glue= {"stepdefinition","AppHooks"})
 
 public class MyTestRunner extends AbstractTestNGCucumberTests{

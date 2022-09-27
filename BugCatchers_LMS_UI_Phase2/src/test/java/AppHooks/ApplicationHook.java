@@ -38,7 +38,7 @@ public class ApplicationHook {
 	
 	 @After(order = 0) 
 	 public void quitBrowser() { 
-		// driver.quit(); 
+		driver.quit(); 
 		 }
 	 
 
